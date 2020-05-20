@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Nova Multa</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<style type="text/css">
+		
+		body{
+			background-color: #566e7a;
+		}
+		
+		h1 {
+		color: #FFFFFF; 
+		text-align: center;
+		}
+		
+	</style>
+</head>
+<body>
+
+	<section class="container">
+		<div>
+			<div class="col-lg-12">
+				 <h1 class="text-center text-white pt-5">Cadastrar Multas</h1>
+			</div>
+			<br>
+		</div>
+
+		<ol class="breadcrumb">
+
+			<li class="breadcrumb-item"><a th:href="@{/multas}">Home</a></li>
+		</ol>
+
+		<form th:object="${multa}" th:action="@{/multas/salvar}" method="POST"
+			role="form">
+
+			<input id="id" type="hidden" class="form-control" th:field="*{id}" />
+			<div class="form-group">
+				<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+					<div th:each="detailedError : ${#fields.detailedErrors()}">
+						<span th:text="${detailedError.message}"></span>
+					</div>
+				</div>
+			</div>
+
+<!-- 			<div class="form-group" 
+<!-- 				th:classappend="${#fields.hasErrors('id')}? 'has-error'"> 
+<!-- 				<label>Id</label> <input id="name" class="form-control" type="text" 
+<!-- 					name="id" th:field="*{id}" /> 
+<!-- 			</div> 
+
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('descricao')}? 'has-error'">
+				<label>Descrição</label> <input class="form-control" type="text"
+					name="descricao" th:field="*{descricao}" />
+			</div>
+			
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('data')}? 'has-error'">
+				<label>Valor</label> <input class="form-control" type="text"
+					name="data" th:field="*{valor}" />
+			</div>
+
+
+			<div class="form-group"
+				th:classappend="${#fields.hasErrors('data')}? 'has-error'">
+				<label>Data</label> <input class="form-control" type="date"
+					name="data" th:field="*{data}" />
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-outline btn-primary">Salvar</button>
+				<a th:href="@{/multas}" type="button"
+					class="btn btn-outline btn-success">Multas Emitidas</a>
+			</div>
+		</form>
+	</section>
+
+
+</body>
+</html>

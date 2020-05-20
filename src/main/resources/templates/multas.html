@@ -1,12 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Multas</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+	<style type="text/css">
+		
+		body{
+			background-color: #566e7a;
+		}
+		
+		h1 {
+		color: #FFFFFF; 
+		text-align: center;
+		}
+		
+	</style>
 </head>
 <body>
-	<div align="center">
-		<p style="color: red;font-size: 20px;font-family: Arial"> Multas Emitidas</p> 
-	</div>
+	<section class="container">
+		<div>
+			<div class="col-lg-12">
+				 <h1 class="text-center text-white pt-5">Multas</h1>
+			</div>
+			<br>
+		</div>
+			
+        <ol class="breadcrumb">
+        
+			<li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+		</ol>
+		
+		
+		<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+			
+			<label> Multa salva com sucesso!</label>
+			
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+			
+   		</div>
+		
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Descrição</th>
+					<th>Valor</th>
+					<th>Data</th>
+				</tr>
+				</thead>
+				
+			<tbody>
+				<tr th:each="multa: ${multas}">
+					<td th:text="${multa.id}"></td>
+					<td th:text="${multa.descricao}"></td>
+					<td th:text="'R$' + ${multa.valor}"></td>
+					<td th:text="${multa.data}"></td>
+				</tr>
+				<tr>
+	   				<td colspan="6" th:if="${#lists.isEmpty(multas)}">Nenhuma multa foi encontrada</td>
+	   				
+	   			</tr>
+			</tbody>
+		</table>
+			
+			<a th:href="@{/multas/novo}" type="button" class="btn btn-outline btn-primary">Nova Multa</a>
+			
+		</section>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

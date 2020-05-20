@@ -1,0 +1,129 @@
+<html
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Pagina Home">
+  <meta name="author" content="Gerlan Ferreira">
+
+  <title>Home</title>
+
+  <link rel="stylesheet" type="text/css" th:href="@{css/vendor/sb-admin-2.min.css}" />
+  
+  <link rel="stylesheet" type="text/css" th:href="@{css/vendor/fontawesome-free/css/all.min.css}" />
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+	
+
+</head>
+
+<body id="page-top" class="sidebar-toggled">
+
+
+  <div id="wrapper">
+  
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/home}">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-building"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Condomínio ACME</div>
+      </a>
+
+     
+      <hr class="sidebar-divider my-0">
+
+     
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/multas}">
+          <span>Multas</span></a>
+      </li>
+
+      <hr class="sidebar-divider d-none d-md-block">
+      
+      	<div class="text-center d-none d-md-inline">
+      
+        	<button class="rounded-circle border-0" id="sidebarToggle"></button>
+        	
+      	</div>
+
+    </ul>
+
+  
+    <div id="content-wrapper" class="d-flex flex-column">
+
+     
+      <div id="content">
+       
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+         
+         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="navbar-nav ml-auto">
+          <div class="topbar-divider d-none d-sm-block"></div>
+
+        
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:inline="text">[[${#httpServletRequest.remoteUser}]]</span> 
+					<h5 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h5>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/user/erondu/60x60">
+              </a>
+             
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <div class="dropdown-divider"></div>
+					<form th:action="@{/logout}" method="post" class="dropdown-item">
+                      
+    					<input type="submit" value="Logout" class="btn btn-info"/>
+        
+					</form>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <div class="container-fluid">
+
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Home</h1>
+        </div>
+
+      </div>
+      
+<!-- <!--     <div class="modal fade show" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="padding-right: 12px; display: block;" aria-modal="true">  -->
+<!-- <!--     <div class="modal-dialog" role="document">  -->
+<!-- <!--       <div class="modal-content">  -->
+<!-- <!--         <div class="modal-header">  -->
+<!-- <!--           <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>  -->
+<!-- <!--           <button class="close" type="button" data-dismiss="modal" aria-label="Close">  -->
+<!-- <!--             <span aria-hidden="true">×</span>  -->
+<!-- <!--           </button>  -->
+<!-- <!--         </div>  -->
+<!-- <!--         <div class="modal-body">Clique em "Logout" para fechar a sessão atual.</div>  -->
+<!-- <!--         <div class="modal-footer">  -->
+<!-- <!--           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>  -->
+<!-- <!--           <a class="btn btn-primary" href="login.html">Logout</a>  -->
+<!-- <!--         </div>  -->
+<!-- <!--       </div>  -->
+<!-- <!--     </div>  -->
+	
+		<script type="text/javascript" th:src="@{jquery/jquery.min.js}"></script>
+		<script type="text/javascript" th:src="@{js/sb-admin-2.min.js}"></script>
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+
+</html>
